@@ -1,0 +1,1 @@
+# code-spell-checker-studio-extension
