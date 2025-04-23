@@ -1,0 +1,54 @@
+{
+  "name": "code-spell-checker-web-extension",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Extension for Mendix Studio Pro",
+  "license": "MIT",
+  "copyright": "Copyright 2024 CLEVR NL B.V.",
+  "author": "Andries Smit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clevrSolutions/code-spell-checker-web-extension"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && vite build --config vite.config.ts",
+    "uiTest": "tsc --noEmit && vite --mode mock --config vite.config.ts",
+    "postinstall_x": "node scripts/postinstall.js",
+    "lint": "eslint --config .eslintrc.js --ext .jsx,.js,.ts,.tsx src",
+    "lint:fix": "eslint --config .eslintrc.js --ext .jsx,.js,.ts,.tsx src --fix",
+    "format": "prettier --config prettier.json {src,typings,tests}/**/*.{js,jsx,ts,tsx,scss} --check",
+    "format:fix": "prettier --config prettier.json {src,typings,tests}/**/*.{js,jsx,ts,tsx,scss} --write"
+  },
+  "dependencies": {
+    "@mendix/extensions-api": "^0.1.1-mendix.10.21.0",
+    "eslint": "^7.20.0",
+    "bootstrap": "^5.3.2",
+    "dictionary-en": "^4.0.0",
+    "dictionary-en-gb": "^3.0.0",
+    "dictionary-nl": "^2.0.0",
+    "nspell": "^2.1.5",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.9.1",
+    "react-dom": "^18.3.1",
+    "react-select": "^5.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "prettier": "^2.5.1",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.2",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "@prettier/plugin-xml": "^1.2.0",
+    "@types/nspell": "^2.1.6",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-jest": "^24.1.5",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "~7.28.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
+}

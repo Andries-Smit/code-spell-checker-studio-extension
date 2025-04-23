@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "es2023",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@model": ["src/utils/Model.ts"],
+      "@settings": ["src/utils/Settings.ts"],
+      "@dictionary": ["src/utils/Dictionary.ts"]
+    }
+  },
+  "include": ["src"]
+}

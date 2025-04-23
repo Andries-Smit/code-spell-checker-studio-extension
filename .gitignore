@@ -1,0 +1,5 @@
+node_modules/
+dist/
+public/dictionaries/
+.vscode/settings.json
+.env.local

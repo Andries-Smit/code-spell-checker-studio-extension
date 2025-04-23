@@ -1,0 +1,56 @@
+.table > :not(caption) > * > * {
+  padding: 0.1rem 0.1rem;
+}
+
+.tab-panel {
+  padding: 0.5rem;
+}
+
+.underlined-text {
+  display: flex;
+}
+.underlined-text .dropdown-toggle::after {
+  display: none;
+}
+
+.select-wrapper {
+  display: flex;
+}
+.basic-multi-select {
+  width: 100%;
+  margin-right: 0.6rem;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.icon-btn {
+  width: 15px;
+  height: 15px;
+  min-height: 1.3rem;
+}
+
+.icon-ok {
+  color: green;
+}
+.icon-ignore {
+  color: orange;
+}
+
+.icon-error {
+  color: red;
+}
+
+.input-group-inline {
+  margin-left: -8px;
+}
+
+.form-group,
+.card {
+  margin-bottom: 0.8rem;
+}
