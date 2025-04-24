@@ -2,7 +2,7 @@
 
 Improve code quality by checking spelling in your Mendix Studio Pro project.
 
-## features
+## Features
 
 - Spell check (all) document names, variables and parameter in the project.
 - Supports multiple languages; English (US), English (UK), Dutch
@@ -11,7 +11,7 @@ Improve code quality by checking spelling in your Mendix Studio Pro project.
 - Ignore words
 - Select modules and documents types to check
 
-<img src="./assets/docs/CodeSpellChecker.png" alt="CodeSpellChecker" width="400"/>
+<img src="./assets/docs/CodeSpellChecker.png" alt="CodeSpellChecker" width="600"/>
 
 <img src="./assets/docs/CodeSpellCheckerSettings.png" alt="CodeSpellChecker" width="400"/>
 
@@ -21,13 +21,14 @@ Improve code quality by checking spelling in your Mendix Studio Pro project.
 - Limited to some documentation types
 - Removing an Project Dictionary, requires a restart of the extension.
 - Mendix BUG, documents are not automatically saved. Requires manual saving from Studio Pro.
+- Not all locations could be resolved. It will only show the module for domain models.
 
 ## Install for Usage
 
-- Download release, matching your Mendix Studio Pro version.
+- Download the latest release, https://github.com/Andries-Smit/code-spell-checker-studio-extension/releases matching your Mendix Studio Pro version.
 - Create in the Mendix project a folder named `webextensions`.
 - Unzip the `CodeSpellChecker.zip` file.
-- Copy the `CodeSpellChecker` folder to the project webextensions folder.
+- Copy the `CodeSpellChecker` folder to the project `webextensions` folder.
 
 ## Running the extension
 
@@ -101,7 +102,7 @@ The build can copy the `CodeSpellChecker` folder to the project webextensions fo
 
 With the additional feature flags you can debug the extension in the studio pro.
 
-Start Studio Pro with the `--enable-extension-development --enable-extension-development --enable-webview-debugging --webview-remote-debugging` feature flags.
+Start Studio Pro with the `--enable-extension-development --enable-webview-debugging --webview-remote-debugging` feature flags.
 
 When the extension is running and windows is active, you can start the debugger by pressing F12.
 

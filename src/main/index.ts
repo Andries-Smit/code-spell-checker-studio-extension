@@ -9,10 +9,6 @@ class Main implements IComponent {
             menuId,
             caption,
         });
-        // await studioPro.ui.extensionsMenu.add({
-        //     menuId: "test",
-        //     caption: "Test"
-        // });
 
         studioPro.ui.extensionsMenu.addEventListener("menuItemActivated", args => {
             if (args.menuId === menuId) {
@@ -26,23 +22,8 @@ class Main implements IComponent {
                     },
                 );
             }
-            if (args.menuId === "test") {
-                test();
-            }
         });
     }
 }
 
-async function test(): Promise<void> {
-    console.log("test");
-    const { domainModels } = studioPro.app.model;
-    const [domainModel] = await domainModels.loadAll(info => info.moduleName === "MyFirstModule");
-    const newEntity = await domainModel.addEntity({
-        name: "NewEntity",
-        attributes: [{ name: "MyAttribute", type: "AutoNumber" }],
-    });
-    newEntity.documentation = "New documentation";
-    // It saves, but it does not persist!
-    await domainModels.save(domainModel);
-}
 export const component: IComponent = new Main();
