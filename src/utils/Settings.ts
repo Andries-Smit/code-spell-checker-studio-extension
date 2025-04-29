@@ -38,6 +38,7 @@ export const loadSettings = async (): Promise<Settings> => {
         console.log(settings);
         return settings;
     } catch (e) {
+        console.warn("error loading settings", e);
         console.log("default settings", defaultSettings);
         return defaultSettings;
     }
