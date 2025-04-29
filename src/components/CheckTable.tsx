@@ -183,7 +183,7 @@ export const CheckTable = ({
                                                 />
                                                 <div className="input-group-append">
                                                     <button
-                                                        onClick={e => onClickSave(text.id)}
+                                                        onClick={() => onClickSave(text.id)}
                                                         className="btn btn-outline-secondary btn-sm"
                                                         type="button"
                                                     >

@@ -32,7 +32,11 @@ function App(): ReactElement {
         if (spell) {
             dispatch({
                 type: "RELOAD_SPELLCHECK",
-                payload: { spell, all: settings.checkShowAll, ignore: settings.projectIgnore },
+                payload: {
+                    spell,
+                    all: settings.checkShowAll,
+                    ignore: settings.projectIgnore,
+                },
             });
         }
         // console.log(JSON.stringify(dataSet, null, 2));

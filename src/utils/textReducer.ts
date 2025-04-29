@@ -49,8 +49,14 @@ export type Action =
       }
     | { type: "IGNORE_TEXT"; payload: { id: string } }
     | { type: "EDIT_TEXT"; payload: { id: string; edit: boolean } }
-    | { type: "RELOAD_SPELLCHECK"; payload: { spell: nspell; all: boolean; ignore: string[] } }
-    | { type: "REFRESH_SPELLCHECK"; payload: { spell: nspell; ignore: string[] } };
+    | {
+          type: "RELOAD_SPELLCHECK";
+          payload: { spell: nspell; all: boolean; ignore: string[] };
+      }
+    | {
+          type: "REFRESH_SPELLCHECK";
+          payload: { spell: nspell; ignore: string[] };
+      };
 
 export const textsReducer = (state: TextData[], action: Action): TextData[] => {
     switch (action.type) {
