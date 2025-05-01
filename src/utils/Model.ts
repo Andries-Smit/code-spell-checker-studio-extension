@@ -36,8 +36,8 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
     const { pages, domainModels, enumerations, snippets } = studioPro.app.model;
     const allModules = await domainModels.getModules();
     console.log("modules", allModules);
-    const unitsInfo = await domainModels.getUnitsInfo();
-    console.log("getUnitsInfo", unitsInfo);
+    const unitsInfoModel = await domainModels.getUnitsInfo();
+    console.log("getUnitsInfo", unitsInfoModel);
     const moduleSelection = settings.moduleSelection.map(m => m.label);
     const dataSet: TextData[] = [];
     allModules.forEach(module => {
@@ -63,7 +63,7 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
             moduleSelection.includes(info.moduleName!),
         );
         selectedModels.forEach(model => {
-            const moduleName = unitsInfo.find(m => m.$ID === model.$ID)?.moduleName || "?";
+            const moduleName = unitsInfoModel.find(m => m.$ID === model.$ID)?.moduleName || "?";
             model.associations.forEach(association => {
                 dataSet.push({
                     id: association.$ID,
@@ -122,8 +122,9 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
         const selectedSnippets = await snippets.loadAll((info: Primitives.UnitInfo) =>
             moduleSelection.includes(info.moduleName!),
         );
+        const snippetsInfo = await snippets.getUnitsInfo();
         selectedSnippets.forEach(snippet => {
-            const moduleName = unitsInfo.find(m => m.$ID === snippet.$ID)?.moduleName || "?";
+            const moduleName = snippetsInfo.find(m => m.$ID === snippet.$ID)?.moduleName || "?";
             dataSet.push({
                 id: snippet.$ID,
                 location: moduleName,
@@ -179,8 +180,9 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
         const selectedEnums = await enumerations.loadAll((info: Primitives.UnitInfo) =>
             moduleSelection.includes(info.moduleName!),
         );
+        const enumerationsInfo = await enumerations.getUnitsInfo();
         selectedEnums.forEach(enumeration => {
-            const moduleName = unitsInfo.find(m => m.$ID === enumeration.$ID)?.moduleName || "?";
+            const moduleName = enumerationsInfo.find(m => m.$ID === enumeration.$ID)?.moduleName || "?";
             dataSet.push({
                 id: enumeration.$ID,
                 location: moduleName,
@@ -218,12 +220,12 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
         const selectedPages = await pages.loadAll((info: Primitives.UnitInfo) =>
             moduleSelection.includes(info.moduleName!),
         );
+        const pagesInfo = await pages.getUnitsInfo();
         selectedPages.forEach(page => {
-            // const moduleName =
-            //     unitsInfo.find((m) => m.$ID === page.$ID)?.moduleName || "?";
+            const moduleName = pagesInfo.find(m => m.$ID === page.$ID)?.moduleName || "?";
             dataSet.push({
                 id: page.$ID,
-                location: "?",
+                location: moduleName,
                 text: page.name,
                 textOriginal: page.name,
                 type: TextType.page,
@@ -239,7 +241,7 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
             page.variables.forEach(variable => {
                 dataSet.push({
                     id: variable.$ID,
-                    location: page.name,
+                    location: moduleName + "." + page.name,
                     text: variable.name,
                     textOriginal: variable.name,
                     type: TextType.pageVariable,
@@ -256,7 +258,7 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
             page.parameters.forEach(parameter => {
                 dataSet.push({
                     id: parameter.$ID,
-                    location: page.name,
+                    location: moduleName + "." + page.name,
                     text: parameter.name,
                     textOriginal: parameter.name,
                     type: TextType.pageParameter,
@@ -272,6 +274,6 @@ export const loadModel = async (settings: Settings): Promise<TextData[]> => {
             });
         });
     }
-    console.log(JSON.stringify(dataSet, null, 2));
+
     return dataSet;
 };
