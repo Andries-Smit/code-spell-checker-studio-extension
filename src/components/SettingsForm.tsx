@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 
 import { saveSettings } from "@settings";
 import { Settings } from "../utils/Settings";
+import { Language, Languages } from "../utils/useSpellChecker";
 
 interface SettingsFormProps {
     settings: Settings;
@@ -51,10 +52,15 @@ export const SettingsForm = ({ settings, setSettings }: SettingsFormProps): Reac
         <div>
             <div className="form-group">
                 <label htmlFor="language">Language</label>
-                <Form.Select id="language" onChange={e => handleSettingsChange("language", e.target.value)}>
-                    <option value="en_US">English (US)</option>
-                    <option value="en_GB">English (UK)</option>
-                    <option value="nl_NL">Dutch</option>
+                <Form.Select
+                    id="language"
+                    onChange={e => handleSettingsChange("language", e.target.value as unknown as Language)}
+                >
+                    {Languages.map(lang => (
+                        <option key={lang.code} value={lang.code}>
+                            {lang.language}
+                        </option>
+                    ))}
                 </Form.Select>
             </div>
             <div className="form-group">

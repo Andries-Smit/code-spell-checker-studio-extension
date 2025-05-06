@@ -1,10 +1,11 @@
 import { Settings } from "../utils/Settings";
+import { Language } from "../utils/useSpellChecker";
 
 const projectDictionaryText = "Mendix,clevr,haha";
 const projectIgnoreText = "blabla,haha";
 
 export const defaultSettings: Settings = {
-    language: "en_US",
+    language: Language.en_US,
     projectDictionary: projectDictionaryText.split(","),
     projectDictionaryText,
     projectIgnore: projectIgnoreText.split(","),

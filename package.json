@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc --noEmit && vite build --config vite.config.ts",
     "uiTest": "tsc --noEmit && vite --mode mock --config vite.config.ts",
-    "postinstall_x": "node scripts/postinstall.js",
+    "postinstall": "node scripts/postinstall.js",
     "lint": "eslint --config eslint.config.ts --ext .jsx,.js,.ts,.tsx src",
     "lint:fix": "eslint --config eslint.config.ts --ext .jsx,.js,.ts,.tsx src --fix",
     "format": "prettier --check {src,typings}/**/*.{js,jsx,ts,tsx,scss} ",

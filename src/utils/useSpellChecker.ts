@@ -2,7 +2,28 @@ import { useState, useEffect } from "react";
 import type nspell from "nspell";
 import { loadDictionary } from "@dictionary";
 
-export function useSpellChecker(language = "en_US"): nspell | null {
+export enum Language {
+    en_US = "en_US",
+    en_GB = "en_GB",
+    nl_NL = "nl_NL",
+}
+
+export const Languages = [
+    {
+        language: "English (US)",
+        code: Language.en_US,
+    },
+    {
+        language: "English (UK)",
+        code: Language.en_GB,
+    },
+    {
+        language: "Dutch",
+        code: Language.nl_NL,
+    },
+];
+
+export function useSpellChecker(language: Language = Language.en_US): nspell | null {
     const [spell, setSpell] = useState<nspell | null>(null);
 
     useEffect(() => {

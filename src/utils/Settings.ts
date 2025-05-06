@@ -1,10 +1,11 @@
 import { studioPro } from "@mendix/extensions-api";
 import { ModuleInfo } from "./Model";
+import { Language } from "./useSpellChecker";
 
 const settingsLocation = "./settings-code-spell-checker.json";
 
 export interface Settings {
-    language: string;
+    language: Language;
     projectDictionary: string[];
     projectDictionaryText: string;
     projectIgnore: string[];
@@ -18,7 +19,7 @@ export interface Settings {
 }
 
 export const defaultSettings: Settings = {
-    language: "en_US",
+    language: Language.en_US,
     projectDictionary: [],
     projectDictionaryText: "",
     projectIgnore: [],
